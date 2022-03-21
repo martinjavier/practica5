@@ -1,0 +1,21 @@
+<h1>Productos</h1>
+
+<table class={{this.estilo}}>
+  <tr>
+    <th>Nombre</th>
+    <th>Precio</th>
+    <th>Foto</th>
+  </tr>
+  {{#each productos}}
+  <tr>    
+    <td>{{this.nombre}}</td>
+    <td>{{this.precio}}</td>
+    <td><img src={{this.foto}} alt={{this.nombre}}></td>
+  </tr>
+  {{/each}}
+</table>
+
+<br>
+<a href="/">Pantalla Principal</a>
+<br>
+

@@ -1,29 +1,15 @@
 const express = require('express');
 const {engine} = require('express-handlebars');
 
-const usuarios = [
-    {
-        nombre: "Juan",
-        edad: 30,
-        estilo: "est1"
-    },
-    {
-        nombre: "Pedro",
-        edad: 50,
-        estilo: "est1"
-    },
-    {
-        nombre: "Andres",
-        edad: 76,
-        estilo: "est2"
-    }
-]
-
 const productos = [
     {
         nombre: "calculadora",
         precio: 123.45,
         foto: "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png"
+    },
+    {   nombre: "reloj",
+        precio: 59.34,
+        foto: "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png"
     }
 ]
 
@@ -49,6 +35,24 @@ app.get('/', (req, res) => {
     res.render("main", {
         productos
     })
+})
+
+app.get('/productos', (req, res) => {
+    res.render("productos", {
+        productos
+    })
+})
+
+app.get('/cargar', (req, res) => {
+    res.render("cargar", {
+        productos
+    })
+})
+
+app.post('/', (req,res) => {
+    const { body } = req;
+    productos.push(body);
+    res.send('<script>alert("Información Guardada");windows.location.href="/"</script>')
 })
 
 const PORT = 8080
